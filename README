@@ -1,0 +1,9 @@
+README for Object-Capsule
+
+An Object::Capsule is a thin, permeable membrane that fits nicely around an
+object.  Method calls are passed on to the object, which functions normally
+inside the capsule.  The object can be retrieved by dereferencing the capsule
+as a scalar.
+
+My intent is to use an object capsule subclass to allow the inflation of
+multiple object types from a single column in Class::DBI.
