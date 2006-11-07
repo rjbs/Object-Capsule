@@ -53,6 +53,7 @@ capsule.  It's exported by default and is otherwise non-existent.
 
 sub import {
 	my ($importer) = caller;
+  ## no critic (ProhibitNoStrict)
 	no strict 'refs';
 	*{$importer."\::encapsulate"} = sub {
 		my $object = shift;
