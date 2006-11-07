@@ -9,13 +9,13 @@ Object::Capsule - wrap any object in a flavorless capsule
 
 =head1 VERSION
 
-version 0.01
+version 0.011
 
-	$Id: Capsule.pm,v 1.5 2004/09/12 14:38:56 rjbs Exp $
+	$Id$
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.011';
 
 =head1 SYNOPSIS
 
