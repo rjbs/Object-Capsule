@@ -61,19 +61,19 @@ sub import {
 	}
 }
 
-sub AUTOLOAD { 
+sub AUTOLOAD { ## no critic Autoload
 	my $self = shift;
 	my $method = our $AUTOLOAD;
 	$method =~ s/.*:://;
 
 	unless (ref $self) {
 		my($callpack, $callfile, $callline) = caller;
-		die sprintf
+		die sprintf ## no critic RequireCarping
 			qq{Can\'t locate object method "%s" via package "%s" }.
 		  qq{at %s line %d.\n},
 			$method, $self, $callfile, $callline;
 	}
-	return unless UNIVERSAL::can($$self, $method);
+	return unless eval { $$self->can($method); };
 	$$self->$method(@_);
 }
 
