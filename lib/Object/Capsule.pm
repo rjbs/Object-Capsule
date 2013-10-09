@@ -1,21 +1,7 @@
-package Object::Capsule;
-
-use warnings;
 use strict;
-
-=head1 NAME
-
-Object::Capsule - wrap any object in a flavorless capsule
-
-=head1 VERSION
-
-version 0.011
-
-	$Id$
-
-=cut
-
-our $VERSION = '0.011';
+use warnings;
+package Object::Capsule;
+# ABSTRACT: wrap any object in a flavorless capsule (don't use this)
 
 =head1 SYNOPSIS
 
@@ -34,6 +20,9 @@ our $VERSION = '0.011';
 
 =head1 DESCRIPTION
 
+B<Achtung!>:  This code is stupid.  I wrote it to abuse Class::DBI.  You
+probably shouldn't use it.
+
 An Object::Capsule is a thin, permeable membrane that fits nicely around an
 object.  Method calls are passed on to the object, which functions normally
 inside the capsule.  The object can be retrieved by dereferencing the capsule
@@ -42,9 +31,9 @@ as a scalar.
 My intent is to use an object capsule subclass to allow the inflation of
 multiple object types from a single column in Class::DBI.
 
-=head1 FUNCTIONS
+=func encapsulate
 
-=head2 C< encapsulate($object) >
+  $capsule = encapsulate($object);
 
 This function encases the given object in an Object::Capsule and returns the
 capsule.  It's exported by default and is otherwise non-existent.
@@ -200,11 +189,7 @@ use overload
 	'atan2'  => sub { $_[2] ? atan2($_[1],${$_[0]}) : atan2(${$_[0]},$_[1]) },
 	'sqrt'   => sub { sqrt(${$_[0]}) },
 	'<>'     => sub { <${$_[0]}> },
-; 
-
-=head1 AUTHOR
-
-Ricardo Signes, C<< <rjbs@cpan.org> >>
+;
 
 =head1 BUGS
 
@@ -217,13 +202,6 @@ be notified of progress on your bug as I make changes.
 
 The proxy overloading code is hideous.  The "future" version in the code had
 bizarre problems that I couldn't quite solve, but I'll try again sometime.
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2004 Ricardo Signes, All Rights Reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
 
 =cut
 
